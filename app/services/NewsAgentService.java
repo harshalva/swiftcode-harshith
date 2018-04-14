@@ -26,9 +26,9 @@ public class NewsAgentService {
    JsonNode response=responsePromise.thenApply(WSResponse::asJson).toCompletableFuture().get();
    newsAgentReponse.query=response.get("result").get("parameters").get("keyword").asText().isEmpty() ?
            (response.get("result").get("parameters").get("source").asText().isEmpty()
-                   ? response.get("result").get("parameters").get("category").asText()
-                   : response.get("result").get("parameters").get("source").asText() )
-           : response.get("result").get("parameters").get("keyword").asText() ;
+                   ?response.get("result").get("parameters").get("category").asText()
+                   :response.get("result").get("parameters").get("source").asText())
+           :response.get("result").get("parameters").get("keyword").asText();
   }
   catch(Exception e){
    e.printStackTrace();
