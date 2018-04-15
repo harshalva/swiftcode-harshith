@@ -40,6 +40,12 @@ public class MessageActor extends UntypedActor {
             messageObj.sender=Message.Sender.BOT;
             out.tell(mapper.writeValueAsString(messageObj), self());
         }
+        else
+        {
+            messageObj.text = "Text is invalid input";
+            messageObj.sender=Message.Sender.BOT;
+            out.tell(mapper.writeValueAsString(messageObj), self());
+        }
 
     }
 }
